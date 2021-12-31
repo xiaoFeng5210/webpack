@@ -1,20 +1,24 @@
 {
-  "name": "webpack",
-  "version": "1.0.0",
-  "description": "learn webpack",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "my-webpack-demo-1",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=14"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xiaoFeng5210/webpack.git"
+  "dependencies": {
+    "@babel/core": "7.12.3",
+    "@babel/generator": "7.12.5",
+    "@babel/parser": "7.12.5",
+    "@babel/preset-env": "7.12.1",
+    "@babel/traverse": "7.12.5",
+    "@types/babel__traverse": "7.0.15",
+    "ts-node": "9.0.0",
+    "typescript": "4.0.5"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xiaoFeng5210/webpack/issues"
-  },
-  "homepage": "https://github.com/xiaoFeng5210/webpack#readme"
+  "devDependencies": {
+    "@types/babel__core": "7.1.12",
+    "@types/babel__generator": "7.6.2",
+    "@types/babel__parser": "7.1.1",
+    "@types/babel__preset-env": "7.9.1",
+    "@types/node": "14.14.6"
+  }
 }
