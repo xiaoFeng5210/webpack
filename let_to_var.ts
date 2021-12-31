@@ -17,5 +17,6 @@ traverse(ast, {
         }
     }
 });
+// 把ast 转变为代码
 const result = generate(ast, {}, code);
-console.log(result.code)
+console.log(result.code);
