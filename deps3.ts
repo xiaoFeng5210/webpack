@@ -17,6 +17,10 @@ collectCodeAndDeps(resolve(projectRoot, 'index.js'))
 
 function collectCodeAndDeps(filePath: string) {
     const key = getProjectPath(filePath)
+    // 避免循环依赖
+    if (Object.keys(depRelation).includes(key)) {
+        return
+    }
     const code = readFileSync(filePath).toString()
     depRelation[key] = { deps: [], code }
     const ast = parse(code, {sourceType: 'module'})
