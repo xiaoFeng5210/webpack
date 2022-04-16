@@ -1,9 +1,12 @@
+import { test } from "./jsx-demo.jsx"
 const str = '111'
 console.log(str)
 
-const test = () => {
+const test01 = () => {
     let a = 2
     console.log(a)
 }
 
-test()
+console.log(test)
+
+test01()
