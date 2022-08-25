@@ -35,6 +35,11 @@ module.exports = {
                     'css-loader',
                     'less-loader'
                 ]
+            },
+            // 图片资源解析
+            {
+                test: /.(png|jpg|gif|jpeg)$/,
+                use: 'file-loader'
             }
         ]
     }
