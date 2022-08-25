@@ -1,7 +1,8 @@
 {
   "name": "my-webpack-demo-1",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server --open"
   },
   "version": "0.0.1",
   "engines": {

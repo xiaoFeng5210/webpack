@@ -1,8 +1,9 @@
 const ESLintPlugin = require('eslint-webpack-plugin')
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'dist'),
@@ -17,7 +18,11 @@ module.exports = {
     // 让webpack去检查eslint
     plugins: [new ESLintPlugin({
         extensions: ['.js', '.jsx']
-    })],
+    }), new webpack.HotModuleReplacementPlugin()],
+    devServer: {
+        contentBase: './dist',
+        hot: true
+    },
     module: {
         rules: [
             {
