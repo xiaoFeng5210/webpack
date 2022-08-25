@@ -1,7 +1,12 @@
 const ESLintPlugin = require('eslint-webpack-plugin')
+const path = require('path')
 
 module.exports = {
     mode: 'production',
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
     // 让webpack去检查eslint
     plugins: [new ESLintPlugin({
         extensions: ['.js', '.jsx']
