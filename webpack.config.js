@@ -8,6 +8,12 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
     },
+    watch: true,
+    watchOptions: {
+        ignored: /node_modules/,
+        aggregateTimeout: 300,
+        poll: 1000
+    },
     // 让webpack去检查eslint
     plugins: [new ESLintPlugin({
         extensions: ['.js', '.jsx']
