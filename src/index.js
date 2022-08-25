@@ -1,14 +1,18 @@
-import { test } from "./jsx-demo.jsx"
-import { test_name } from "./typescript01.ts"
-const str = '111'
-console.log(str)
+const protobuf = require('protobufjs');
+const serializer = require('proto3-json-serializer');
 
-const test01 = () => {
-    let a = 2
-    console.log(a)
-}
+const pb_struct = protobuf.loadSync('google/protobuf/struct.proto');
+const Value = pb_struct.lookupType('google.protobuf.Value');
 
-console.log(test)
-console.log(test_name)
+const json = {
+    i32:1,
+    enum: 'ENUM_TWO',
+    vecI32:[1,2,3]
+};
+const deserialized = serializer.fromProto3JSON(Value, json);
+console.log(deserialized);
 
-test01()
+// And serialize it back
+const serialized = serializer.toProto3JSON(deserialized);
+console.log(serialized);
+

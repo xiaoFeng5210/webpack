@@ -9,6 +9,8 @@
   },
   "main": "index.js",
   "dependencies": {
+    "proto3-json-serializer": "^0.1.8",
+    "protobufjs": "^6.11.2",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
