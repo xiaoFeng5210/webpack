@@ -61,6 +61,14 @@ module.exports = {
                     },
                     {
                         loader: 'less-loader',
+                        options: {
+                            additionalData: `@import "src/less-vars.less"`,
+                            lessOptions: {
+                                paths: [
+                                    path.resolve(__dirname, 'node_modules'),
+                                ]
+                            }
+                        }
                     }
                 ]
             },
