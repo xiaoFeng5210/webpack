@@ -66,7 +66,16 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'sass-loader'
+                    // 'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            additionalData: `@import "src/scss-vars.scss"`,
+                            sassOptions: {
+                                includePaths: [__dirname]
+                            }
+                        }
+                    }
                 ]
             },
             // 图片资源解析
