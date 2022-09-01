@@ -3,13 +3,14 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSAssetsPlutin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
     mode: 'production',
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].[contenthash].js'
     },
     // watch: false,
     // watchOptions: {
@@ -21,10 +22,13 @@ module.exports = {
     plugins: [new ESLintPlugin({
         extensions: ['.js', '.jsx']
     }), new webpack.HotModuleReplacementPlugin(),
-    new OptimizeCSSAssetsPlutin({
-        assetNameRegExp: /\.css$/g,
-        cssProcessor: require('cssnano')
+    new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css'
     }),
+    // new OptimizeCSSAssetsPlutin({
+    //     assetNameRegExp: /\.css$/g,
+    //     cssProcessor: require('cssnano')
+    // }),
     new HtmlWebpackPlugin({
         template: path.join(__dirname, 'src/index.html'),
         filename: 'index.html',
@@ -72,7 +76,8 @@ module.exports = {
             {
                 test: /\.less$/i,
                 use: [
-                    'style-loader',
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -111,18 +116,10 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    'style-loader',
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
-                    // 'sass-loader'
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            additionalData: `@import "src/scss-vars.scss"`,
-                            sassOptions: {
-                                includePaths: [__dirname]
-                            }
-                        }
-                    }
+                    'sass-loader'
                 ]
             },
             // 图片资源解析
