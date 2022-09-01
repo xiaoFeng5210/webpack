@@ -35,6 +35,7 @@ module.exports = {
     // }),
     new HtmlWebpackPlugin(
         {
+            template: path.join(__dirname, 'src/index.html'),
             filename: 'index.html',
             chunks: ['index']
         }
@@ -68,13 +69,22 @@ module.exports = {
         splitChunks: {
             cacheGroups: {
                 vendor: {
+                    priority: 10,
                     minSize: 0,
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
                     chunks: 'all'
+                },
+                common: {
+                    priority: 9,
+                    minSize: 0,
+                    minChunks: 2,
+                    chunks: 'all',
+                    name: 'common'
                 }
             }
-        }
+        },
+        
     },
     resolve: {
         alias: {
