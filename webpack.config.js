@@ -23,7 +23,7 @@ module.exports = {
     plugins: [new ESLintPlugin({
         extensions: ['.js', '.jsx']
     }), new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
+    mode === 'production' && new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css'
     }),
     // new OptimizeCSSAssetsPlutin({
@@ -45,7 +45,7 @@ module.exports = {
         }
     }),
 
-    ],
+    ].filter(Boolean),
     devServer: {
         contentBase: './dist',
         hot: true
