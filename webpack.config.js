@@ -5,8 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSAssetsPlutin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
+const mode = 'production'
 module.exports = {
-    mode: 'production',
+    mode,
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'dist'),
@@ -116,8 +117,7 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
                     'css-loader',
                     'sass-loader'
                 ]
