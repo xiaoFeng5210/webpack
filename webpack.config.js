@@ -8,7 +8,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const mode = 'production'
 module.exports = {
     mode,
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+        admin: './src/admin.js'
+    },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].[contenthash].js'
@@ -31,6 +34,10 @@ module.exports = {
     //     cssProcessor: require('cssnano')
     // }),
     new HtmlWebpackPlugin(
+        {
+            filename: 'index.html',
+            chunks: ['index']
+        }
     //     {
     //     template: path.join(__dirname, 'src/index.html'),
     //     filename: 'index.html',
@@ -46,6 +53,10 @@ module.exports = {
     //     }
     // }
     ),
+    new HtmlWebpackPlugin({
+        filename: 'admin.html',
+        chunks: ['admin']
+    })
 
     ].filter(Boolean),
     devServer: {

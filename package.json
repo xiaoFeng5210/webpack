@@ -1,7 +1,7 @@
 {
   "name": "my-webpack-demo-1",
   "scripts": {
-    "build": "webpack",
+    "build": "rm -rf dist; webpack",
     "dev": "webpack-dev-server --open"
   },
   "version": "0.0.1",
