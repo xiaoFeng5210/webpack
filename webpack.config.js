@@ -31,26 +31,44 @@ module.exports = {
     //     cssProcessor: require('cssnano')
     // }),
     new HtmlWebpackPlugin(
-        {
-        template: path.join(__dirname, 'src/index.html'),
-        filename: 'index.html',
-        chunks: ['index'],
-        inject: true,
-        minify: {
-            html5: true,
-            collapseWhitespace: true,
-            preserveLineBreaks: false,
-            minifyCSS: true,
-            minifyJS: true,
-            removeComments: false
-        }
-    }
+    //     {
+    //     template: path.join(__dirname, 'src/index.html'),
+    //     filename: 'index.html',
+    //     chunks: ['index'],
+    //     inject: true,
+    //     minify: {
+    //         html5: true,
+    //         collapseWhitespace: true,
+    //         preserveLineBreaks: false,
+    //         minifyCSS: true,
+    //         minifyJS: true,
+    //         removeComments: false
+    //     }
+    // }
     ),
 
     ].filter(Boolean),
     devServer: {
         contentBase: './dist',
         hot: true
+    },
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    minSize: 0,
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
     },
     module: {
         rules: [
