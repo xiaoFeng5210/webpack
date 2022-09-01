@@ -30,7 +30,8 @@ module.exports = {
     //     assetNameRegExp: /\.css$/g,
     //     cssProcessor: require('cssnano')
     // }),
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin(
+        {
         template: path.join(__dirname, 'src/index.html'),
         filename: 'index.html',
         chunks: ['index'],
@@ -43,7 +44,8 @@ module.exports = {
             minifyJS: true,
             removeComments: false
         }
-    }),
+    }
+    ),
 
     ].filter(Boolean),
     devServer: {
